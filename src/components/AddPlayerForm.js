@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-const AddPlayerForm = () => {
+const AddPlayerForm = (props) => {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.addPlayer(value);
+    setValue("")
+  }
+
   return (
-    <form>
+    <form onSubmit={(event) => handleSubmit(event)}>
       <input 
         type="text"
+        value = {value}
         placeholder="Enter player's name"
+        onChange = {(event) => setValue(event.target.value)}
       />
       <input
         type="submit"
