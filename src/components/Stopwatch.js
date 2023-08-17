@@ -5,13 +5,22 @@ const Stopwatch = () => {
     const [elapsedTime, setElapsedTime] = useState(0);
 
     useEffect(() => {
-        
-    });
+        let id;
+        if (isRunning) {
+            id = setInterval(() => {
+                setElapsedTime(prevTime => prevTime + 1) ;
+            }, 1000)
+        }
+
+        return () => {
+            clearInterval(id);
+        }
+    }, [isRunning]);
 
     return (
         <div className="stopwatch">
             <h2>Stopwatch</h2>
-            <span className="stopwatch-time">0:00</span>            
+            <span className="stopwatch-time">{elapsedTime}</span>            
             <button onClick={() => setIsRunning((prevValue) => !prevValue)}>
                 { isRunning ? "Stop" : "Start"}
             </button>
