@@ -1,11 +1,19 @@
 import React from "react";
 
-const Stats = (props) => {
-  const totalPlayers = props.players.length;
-  var totalScore = props.players.reduce((total, player) => {
+const Stats = ({ players }) => {
+ 
+ /***************************************************************
+ * VARIABLES
+ ****************************************************************/
+  const totalPlayers = players.length;
+
+  var totalScore = players.reduce((total, player) => {
     return total + player.score;
   }, 0)
   
+ /***************************************************************
+ * RENDER
+ ****************************************************************/
   return (
     <table className="stats">
       <tbody>

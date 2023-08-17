@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 const Stopwatch = () => {
+
+    /***************************************************************
+     * STATE
+    ****************************************************************/
     const [isRunning, setIsRunning] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
 
+    /***************************************************************
+    * SIDE EFFECT
+    ****************************************************************/
     useEffect(() => {
         let id;
         if (isRunning) {
@@ -17,6 +24,10 @@ const Stopwatch = () => {
         }
     }, [isRunning]);
 
+    
+    /***************************************************************
+    * RENDER
+    ****************************************************************/
     return (
         <div className="stopwatch">
             <h2>Stopwatch</h2>
