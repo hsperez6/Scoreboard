@@ -5,35 +5,22 @@ import Stats from "./Stats";
 import Stopwatch from "./Stopwatch";
 
 const Header = ({ title, players }) => {
-  
-  /*****************************************************************
-   * RENDER
-   ****************************************************************/
   return (
     <header>
-      <Stats 
-        players={players}
-      />
-
+      <Stats players={players}/>
       <h1>{title}</h1>
       <Stopwatch />
     </header>
   );
 }
 
+Header.propTypes = {
+  title: PropTypes.string,
+  players: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
-/**
- * 
-        title="Scoreboard"
-        players={players}
- */
-
-  /*****************************************************************
-   * PROPTYPES CHECKER
-   ****************************************************************/
-  Header.propTypes = {
-    title: PropTypes.string,
-    players: PropTypes.array
-  };
+Header.defaultProps = {
+  title: "Scoreboard"
+}
 
 export default Header;

@@ -1,14 +1,15 @@
 import React, { useRef } from "react";
+import PropTypes from "prop-types"
 
 const AddPlayerForm = ({ addPlayer }) => {
   
   /***************************************************************
-  * STATE
+  * REF
   ****************************************************************/
   const playerInput = useRef();
 
   /*****************************************************************
-  * CALLBACK FUNCTION
+  * FUNCTION
   ****************************************************************/
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,5 +34,12 @@ const AddPlayerForm = ({ addPlayer }) => {
     </form>
   );
 }
+
+/*****************************************************************
+ * PROPTYPES CHECKER
+****************************************************************/
+AddPlayerForm.propTypes = {
+  addPlayer: PropTypes.func.isRequired
+};
 
 export default AddPlayerForm;

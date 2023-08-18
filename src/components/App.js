@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+
 import Header from './Header';
 import Player from './Player';
 import AddPlayerForm from "./AddPlayerForm";
@@ -40,6 +41,7 @@ const App = () => {
     setPlayers(prevPlayers => prevPlayers.filter(p => p.id !== id));
   }
 
+
   const handleScoreChange = (id, delta) => {
     setPlayers(prevPlayers => prevPlayers.map(player => {
       if (player.id === id) {
@@ -51,6 +53,7 @@ const App = () => {
       }
       return player;
     }));
+
   };
 
   const handleAddPlayer = (name) => {
@@ -65,7 +68,7 @@ const App = () => {
     ])
 
     nextPlayerId.current += 1
-    
+
   }
 
 /*****************************************************************
@@ -74,7 +77,6 @@ const App = () => {
   return (
     <div className="scoreboard">
       <Header
-        title="Scoreboard"
         players={players}
       />
 

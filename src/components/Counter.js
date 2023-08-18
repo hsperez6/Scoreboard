@@ -13,13 +13,13 @@ const Counter = ({ score, id, changeScore}) => {
 
 };
 
-  /*****************************************************************
-   * PROPTYPES CHECKER
-   ****************************************************************/
-  Counter.propTypes = {
-  id: PropTypes.number,
-  score: PropTypes.number,
-  changeScore: PropTypes.func
+/*****************************************************************
+ * PROPTYPES CHECKER
+****************************************************************/
+Counter.propTypes = {
+  id: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  changeScore: PropTypes.func.isRequired
 };
 
 export default Counter;
