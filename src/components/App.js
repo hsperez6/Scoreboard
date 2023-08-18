@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Header from './Header';
 import Player from './Player';
@@ -32,7 +32,13 @@ const App = () => {
     }
   ]);
 
+  const [highestScore, setHighestScore] = useState()
   const nextPlayerId = useRef(5)
+
+  useEffect(() => {
+    const scores = players.map(player => player.score);
+    setHighestScore(Math.max(...scores));
+  }, [players]);
 
   /****************************************************************
    * FUNCTIONS TO PASS DOWN
@@ -40,7 +46,6 @@ const App = () => {
   const handleRemovePlayer = (id) => {
     setPlayers(prevPlayers => prevPlayers.filter(p => p.id !== id));
   }
-
 
   const handleScoreChange = (id, delta) => {
     setPlayers(prevPlayers => prevPlayers.map(player => {
@@ -85,10 +90,11 @@ const App = () => {
         <Player
           name={player.name}
           score={player.score}
-          changeScore={handleScoreChange}
           id={player.id}
           key={player.id.toString()}
           removePlayer={handleRemovePlayer}
+          changeScore={handleScoreChange}
+          isHighScore={player.score === highestScore && highestScore !== 0}
         />
       )}
 
